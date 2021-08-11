@@ -1,0 +1,25 @@
+[
+    {
+        "id": "1",
+        "vardas": "Petras", 
+        "pavarde": "Petrus",
+        "gimimoData": "2021-02-02",
+        "alga": "1000.02"
+    },
+
+    {
+        "id": "2",
+        "vardas": "Julius", 
+        "pavarde": "Jankus",
+        "gimimoData": "2021-06-03",
+        "alga": "1550.06"
+    },
+
+    {
+        "id": "3",
+        "vardas": "Andzelmas", 
+        "pavarde": "Katkus",
+        "gimimoData": "2021-05-05",
+        "alga": "1050.02"
+    }
+]

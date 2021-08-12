@@ -134,6 +134,68 @@ app.get("/vienas/:id", async (req, res) => {
     }   
 });
 
+// vv
+
+app.get("/naujas", async (req, res) => {
+  //res.type("application/json");
+  res.type("text/html");
+  try {
+      const fZmones = await readFile("zmones.json", {
+          encoding: "utf8"
+      });
+      const zmones = JSON.parse(fZmones);
+      let zmogus = zmones.find((z) => z.id === id);
+
+         if(!zmogus) {
+             zmogus = {};
+         }
+      res.render("zmogus", zmogus);
+  } catch (err) {
+      res.status(500).send(err);
+  }   
+});
+
+app.get("/zmones", async (req, res) => {
+  res.type("application/json");
+  try {
+    const fZmones = await readFile("zmones.json", {
+      encoding: "utf8",
+    });
+    res.send(fZmones);
+  } catch (err) {
+    res.send("[]");
+  }
+});
+
+app.post("/zmones/add", async (req, res) => {
+  const zmogus = req.body;
+  res.type("text/html");
+  try {
+    const fZmones = await readFile("zmones.json", {
+      encoding: "utf8",
+    });
+    const zmones = JSON.parse(fZmones);
+    let nextId = 0;
+    for (const z of zmones) {
+      if (nextId < z.id) {
+        nextId = z.id;
+      }
+    }
+    nextId++;
+    zmogus.id = nextId;
+    zmones.push(zmogus);
+    await writeFile("zmones.json", JSON.stringify(zmones), {
+      encoding: "utf8",
+    });
+    res.send(zmogus);
+  } catch (err) {
+    res.send("null");
+  }
+});
+
+// vv
+
+
 app.use("/zmones", async (req, res) => {
     res.type("application/json");
     try {

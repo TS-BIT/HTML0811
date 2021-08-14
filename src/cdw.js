@@ -49,3 +49,27 @@ function arrayPlusArray(arr1, arr2) {
   return s1 + s2
 }
 */
+
+function n (num) {
+  for (  num; num > 0; ) {
+  let s = num + (num - 1);
+}
+return n;
+}
+
+console.log(n(1));
+console.log(n(8));
+
+/*
+function makeNegative(num) {
+  if (num > 0) {
+    return num * (-1);
+  }
+  if (num > 0) {
+    return 0;
+  }
+  if (num < 0) {
+    return num ;
+  }  
+}
+*/

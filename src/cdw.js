@@ -35,18 +35,33 @@ return s;
 console.log(numberToPower(10, 4));
 */
 
-
+function n(x) {
+  if (x === "") {
+    return "Error";
+} else {
+  return ((x * 50) + 6);
+}
+}
+console.log(n(10));
+console.log(n(0));
+console.log(n(-20));
+console.log(n(""));
+console.log(n("sss"));
+console.log(n("  "));
+console.log(n({}));
+console.log(n([]));
 
 /*
 function arrayPlusArray(arr1, arr2) {
+  let s1 = 0;
   for (let i = 0; i < arr1.length; ++i) {
-  let s1 += arr1[i];
+  s1 += arr1[i];
   }
+  let s2 = 0;
   for (let j = 0; j < arr2.length; ++j) {
-  let s2 += arr2[j];
+  s2 += arr2[j];
   }
-  
-  return s1 + s2
+  return s1 + s2;
 }
 */
 /*
@@ -60,7 +75,7 @@ return n;
 console.log(n(1));
 console.log(n(8));
 */
-
+/*
 function n(num) {
   if (num > 0) {
     return num * (-1);
@@ -72,10 +87,7 @@ function n(num) {
   }
 }
 
-
-
-
-
 console.log(n(10));
 console.log(n(0));
 console.log(n(-20));
+*/

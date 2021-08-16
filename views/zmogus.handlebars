@@ -1,6 +1,12 @@
-vardas: {{ vardas }}<br>
-pavarde: {{ pavarde }}<br>
-alga: {{ alga }}<br>
-<a href="/h/zmones">Back</a>
+{{#if zmogus}}
+<h1>Informacija apie zmogu:</h1>
 
-
+{{#with zmogus}}
+Vardas: <i><b>{{vardas}}</b><br></i>
+Pavarde: <b>{{pavarde}}</b><br>
+Alga: <b>{{alga}}</b><br>
+{{/with}}
+{{else}}
+<h1>Nezinau as tokio zmogaus</h1>
+{{/if}}
+<a href="/">Back</a>

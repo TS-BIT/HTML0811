@@ -1,34 +1,21 @@
+<a href="/naujasda.html">Prideti nauja zmogu</a>
 <table>
-    {{#each zmones}}
-    <tr>
-        <td>
-            {{this.vardas}}
-        </td>
-
-        <td>
-            {{this.pavarde}}
-        </td>
-        
-        <td>
-            {{this.gimimoData}}
-        </td>
-
-        <td>
-            {{this.alga}}
-        </td>
-
-        <td>
-            <a href="/vienas/{{this.id}}">view</a>
-        </td>
-
-
-    </tr>
-    {{/each}}
-    <tr>
-        <td>
-            <a href="/naujas/{{this.id}}">add new</a>
-        </td>
-    </tr>
-
-
+    <thead>
+        <tr>
+            <th>Vardas</th>
+            <th>Pavarde</th>
+            <th>Alga</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each zmones}}
+        <tr>
+            <td><a href="/zmogus/{{id}}">{{vardas}}</a></td>
+            <td><a href="/zmogus/{{id}}">{{pavarde}}</a></td>
+            <td>{{alga}}</td>
+            <td><a href="/zmogus/{{id}}">panaikinti</a></td>
+            <td><a href="/zmogus/{{id}}">patikslinti</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
 </table>

@@ -34,7 +34,7 @@ return s;
 
 console.log(numberToPower(10, 4));
 */
-
+/*
 function n(x) {
   if (x === "") {
     return "Error";
@@ -50,9 +50,9 @@ console.log(n("sss"));
 console.log(n("  "));
 console.log(n({}));
 console.log(n([]));
-
+*/
 /*
-function arrayPlusArray(arr1, arr2) {
+function n(arr1, arr2) {
   let s1 = 0;
   for (let i = 0; i < arr1.length; ++i) {
   s1 += arr1[i];
@@ -63,7 +63,12 @@ function arrayPlusArray(arr1, arr2) {
   }
   return s1 + s2;
 }
+console.log(n([1, 2, 0], [0, 2, 1]));
 */
+
+
+
+
 /*
 function n (num) {
   for (  num; num > 0; ) {

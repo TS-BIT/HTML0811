@@ -1,0 +1,34 @@
+<table>
+    {{#each zmones}}
+    <tr>
+        <td>
+            {{this.vardas}}
+        </td>
+
+        <td>
+            {{this.pavarde}}
+        </td>
+        
+        <td>
+            {{this.gimimoData}}
+        </td>
+
+        <td>
+            {{this.alga}}
+        </td>
+
+        <td>
+            <a href="/vienas/{{this.id}}">view</a>
+        </td>
+
+
+    </tr>
+    {{/each}}
+    <tr>
+        <td>
+            <a href="/naujas/{{this.id}}">add new</a>
+        </td>
+    </tr>
+
+
+</table>

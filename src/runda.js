@@ -35,8 +35,10 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/zmogus/:id", async (req, res) => {
+app.get("/zmogus/:id?", async (req, res) => {
   try {
+    let zmogus = null;
+    if (req.paramsId)
     let zmones = await readFile(DATA_FILE, {
       encoding: "utf-8",
     });
@@ -72,7 +74,12 @@ app.post("/zmogus", async (req, res) => {
     }
     nextId++;
 
-    const id = parseInt(req.params.id);
+if (req.body.id) {
+////////////////////////
+} else {}
+
+}
+    //const id = parseInt(req.params.id);
     const zmogus = {
         id: nextId,
         vardas: req.body.vardas,
@@ -94,10 +101,42 @@ app.post("/zmogus", async (req, res) => {
   }
 });
 
+app.get("/zmogus/:id/delete", async (req, res) => {
+  try {
+    let zmones = await readFile(DATA_FILE, {
+      encoding: "utf-8",
+    });
+    zmones = JSON.parse(zmones);
+
+    const id = parseInt(req.params.id);
+
+    const zmogus = zmones.find((z) => z.id === id);
+
+    if (index >= 0) {
+      zmones.splice (index, 1)
+      await writeFile(DATA_FILE, JSON.stringify(zmones, null, 2), {
+        encoding: "utf-8"
+    }
+
+    ///////////////////////////////////
+
+    res.render("zmogus", {
+      zmogus,
+      title: "Vienas zmogus",
+    });
+  } catch (err) {
+    res.status(500).end(
+      `<html><body>Ivyko klaida: ${err.message}</body></html>`,
+    );
+  }
+});
+
+
+/*
 app.delete("/zmones/:id", async (req, res) => {
   const id = parseInt(req.params.JSON)
 });
-
+*/
 // app.get("/", async (req, res) => {
 //   try {
 //     let template = await readFile("views/zmones.handlebars", {
@@ -149,3 +188,6 @@ app.delete("/zmones/:id", async (req, res) => {
 
 app.listen(PORT);
 console.log(`Server started on port ${PORT}`);
+
+
+// DOM "document object model"

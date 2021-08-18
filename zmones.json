@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "vardas": "Petras",
-    "pavarde": "Petrus",
-    "gimimoData": "2021-02-02",
-    "alga": 1000.02
-  },
-  {
     "id": 2,
     "vardas": "Julius",
     "pavarde": "Jankus",
@@ -27,9 +20,15 @@
     "alga": 1200.02
   },
   {
-    "id": 5,
-    "vardas": "Petras",
-    "pavarde": "Kutas",
-    "alga": 1200.02
+    "id": 6,
+    "vardas": "Kostas",
+    "pavarde": "Putas",
+    "alga": 1400.04
+  },
+  {
+    "id": 7,
+    "vardas": "Vardenis ",
+    "pavarde": "Pavardenis",
+    "alga": 1222.22
   }
 ]

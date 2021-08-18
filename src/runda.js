@@ -38,7 +38,7 @@ app.get("/", async (req, res) => {
 app.get("/zmogus/:id?", async (req, res) => {
   try {
     let zmogus = null;
-    if (req.paramsId)
+    if (req.params.id) {
     let zmones = await readFile(DATA_FILE, {
       encoding: "utf-8",
     });
@@ -46,8 +46,8 @@ app.get("/zmogus/:id?", async (req, res) => {
 
     const id = parseInt(req.params.id);
 
-    const zmogus = zmones.find((z) => z.id === id);
-
+    zmogus = zmones.find((z) => z.id === id);
+  }
     res.render("zmogus", {
       zmogus,
       title: "Vienas zmogus",
@@ -66,27 +66,36 @@ app.post("/zmogus", async (req, res) => {
     });
     zmones = JSON.parse(zmones);
 
-    let nextId = 0;
-    for (const zmogus of zmones) {
-        if (zmogus.id > nextId) {
-            nextId = zmogus.id;
-        }
-    }
-    nextId++;
-
 if (req.body.id) {
-////////////////////////
-} else {}
+  const id = parseInt(req.body.id);
 
-}
-    //const id = parseInt(req.params.id);
-    const zmogus = {
-        id: nextId,
-        vardas: req.body.vardas,
-        pavarde: req.body.pavarde,
-        alga: parseFloat(req.body.alga),
+  const zmogus = zmones.find((z) => z.id === id);
+  if(zmogus) {
+    zmogus.vardas = req.body.vardas;
+    zmogus.pavarde = req.body.pavarde;
+    zmogus.alga = parseFloat(req.body.alga);
+  } else {
+    res.render("nera", {
+      id
+    })
+    return;
+  }
+} else {
+  let nextId = 0;
+  for (const zmogus of zmones) {
+      if (zmogus.id > nextId) {
+          nextId = zmogus.id;
+      }
+    }
+  nextId++;
+  const zmogus = {
+      id: nextId,
+      vardas: req.body.vardas,
+      pavarde: req.body.pavarde,
+      alga: parseFloat(req.body.alga),
     };
     zmones.push(zmogus);
+}
 
     await writeFile(DATA_FILE, JSON.stringify(zmones, null, 2), {
         encoding: "utf-8"
@@ -110,15 +119,25 @@ app.get("/zmogus/:id/delete", async (req, res) => {
 
     const id = parseInt(req.params.id);
 
-    const zmogus = zmones.find((z) => z.id === id);
+    const index = zmones.findIndex((z) => z.id === id);
 
     if (index >= 0) {
-      zmones.splice (index, 1)
+      zmones.splice (index, 1);
       await writeFile(DATA_FILE, JSON.stringify(zmones, null, 2), {
         encoding: "utf-8"
-    }
+    });
+  }
 
-    ///////////////////////////////////
+  res.redirect("/");
+  } catch (err) {
+    res.status(500).end(
+      `<html><body>Ivyko klaida: ${err.message}</body></html>`,
+    );
+  }
+});
+  
+/*  
+  ///////////////////////////////////
 
     res.render("zmogus", {
       zmogus,
@@ -130,7 +149,7 @@ app.get("/zmogus/:id/delete", async (req, res) => {
     );
   }
 });
-
+*/
 
 /*
 app.delete("/zmones/:id", async (req, res) => {
